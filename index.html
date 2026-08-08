@@ -341,20 +341,20 @@
 </head>
 <body>
 
-    <!-- TELA DE LOGIN COM SENHA UNIVERSAL -->
+    <!-- TELA DE LOGIN (SEMPRE EXIBIDA AO ENTRAR) -->
     <div id="login-screen">
         <img src="https://raw.githubusercontent.com/fblucciano/imagens-venus/1a75aeb06adc8e2e8fbcba2fe4acebfbd0113d01/Venus_logo_OG_adj.2026_logo_sec.png" alt="Venus Medtech" class="login-logo">
         <h2 class="login-title">Clinical Hub</h2>
         <p class="login-subtitle">Enter corporate access password to continue</p>
         
         <form onsubmit="checkPassword(event)">
-            <input type="password" id="password-input" class="login-input" placeholder="••••••••" required autocomplete="current-password">
+            <input type="password" id="password-input" class="login-input" placeholder="••••••••" required autocomplete="off">
             <button type="submit" class="login-btn">Access Hub</button>
             <div id="error-msg" class="error-msg">Incorrect password. Please try again.</div>
         </form>
     </div>
 
-    <!-- CONTEÚDO DO HUB (EXIBIDO APÓS AUTENTICAÇÃO) -->
+    <!-- CONTEÚDO DO HUB (EXIBIDO APÓS DIGITAR A SENHA CORRETA NA SESSÃO) -->
     <div id="hub-content" class="hub-container">
 
         <!-- HEADER -->
@@ -472,22 +472,13 @@
         // SENHA UNIVERSAL (Altere aqui sempre que quiser trocar a senha)
         const MASTER_PASSWORD = "venus2026";
 
-        // Verifica se o usuário já havia logado anteriormente neste navegador
-        window.onload = function() {
-            if (localStorage.getItem("hub_authenticated") === "true") {
-                document.getElementById('login-screen').style.display = 'none';
-                document.getElementById('hub-content').style.display = 'flex';
-                document.body.style.alignItems = 'flex-start';
-            }
-        };
-
         function checkPassword(event) {
             event.preventDefault();
             const inputVal = document.getElementById('password-input').value;
             const errorMsg = document.getElementById('error-msg');
 
             if (inputVal === MASTER_PASSWORD) {
-                localStorage.setItem("hub_authenticated", "true");
+                // Esconde a tela de login e exibe o conteúdo sem salvar nada no navegador
                 document.getElementById('login-screen').style.display = 'none';
                 document.getElementById('hub-content').style.display = 'flex';
                 document.body.style.alignItems = 'flex-start';
