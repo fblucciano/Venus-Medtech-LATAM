@@ -12,11 +12,9 @@
 
     <style>
         :root {
-            /* Paleta Clean / Light Mode (Baseada no Brand Manual) */
             --bg-main: #F4F6F9;
             --card-bg: #FFFFFF;
             --venus-deep-blue: #171434;
-            --venus-blue: #302B6A;
             --venus-accent: #E68A2E;
             --border-color: #E2E8F0;
             --text-main: #1F2937;
@@ -49,13 +47,13 @@
         }
 
         .logo {
-            height: 40px;
+            height: 42px;
             margin-bottom: 15px;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+            filter: drop-shadow(0 2px 5px rgba(23, 20, 52, 0.15));
         }
 
         .hub-title {
-            font-size: 24px;
+            font-size: 26px;
             font-weight: 800;
             letter-spacing: 1px;
             color: var(--venus-deep-blue);
@@ -66,7 +64,7 @@
             font-size: 11px;
             color: var(--text-muted);
             text-transform: uppercase;
-            letter-spacing: 1.5px;
+            letter-spacing: 2px;
             margin: 0;
             font-weight: 600;
         }
@@ -77,13 +75,16 @@
             text-transform: uppercase;
             letter-spacing: 2px;
             color: var(--venus-deep-blue);
-            margin: 0 0 12px 0;
+            margin: 0 0 14px 0;
             padding-bottom: 6px;
-            border-bottom: 2px solid var(--border-color);
+            border-bottom: 2px solid var(--venus-accent);
             font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        /* GRID PARA OS APPS DE SIZING (MAIORES E MAIS DESTACADOS) */
+        /* GRID PARA OS APPS DE SIZING (CAIXAS DINÂMICAS) */
         .apps-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -91,7 +92,7 @@
         }
 
         .app-card {
-            background-color: var(--card-bg);
+            background: linear-gradient(145deg, #FFFFFF, #F8F9FC);
             border: 1px solid var(--border-color);
             border-radius: 18px;
             padding: 20px 14px;
@@ -102,21 +103,36 @@
             align-items: center;
             text-align: center;
             gap: 10px;
-            transition: all 0.25s ease;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
             position: relative;
             overflow: hidden;
         }
 
+        .app-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: transparent;
+            transition: background 0.3s ease;
+        }
+
         .app-card:hover {
             border-color: var(--venus-accent);
-            transform: translateY(-4px);
-            box-shadow: 0 10px 20px rgba(230, 138, 46, 0.15);
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(23, 20, 52, 0.08);
+        }
+
+        .app-card:hover::before {
+            background: var(--venus-accent);
         }
 
         .valve-img-container {
             width: 100%;
-            height: 85px; /* Aumentado para as imagens ficarem bem maiores */
+            height: 90px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -127,7 +143,12 @@
             max-width: 100%;
             max-height: 100%;
             object-fit: contain;
-            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.12));
+            filter: drop-shadow(0 6px 10px rgba(0,0,0,0.12));
+            transition: transform 0.3s ease;
+        }
+
+        .app-card:hover .valve-img {
+            transform: scale(1.06);
         }
 
         .app-title {
@@ -139,39 +160,40 @@
 
         .app-badge {
             font-size: 9px;
-            background-color: #F3F4F6;
-            padding: 3px 9px;
-            border-radius: 10px;
-            color: var(--text-muted);
+            background-color: #EDE9FE;
+            color: var(--venus-deep-blue);
+            padding: 3px 10px;
+            border-radius: 12px;
             letter-spacing: 0.5px;
-            font-weight: 600;
+            font-weight: 700;
         }
 
-        /* LISTA PARA OS FORMS CLÍNICOS */
+        /* LISTA PARA OS FORMS CLÍNICOS (CAIXAS DINÂMICAS) */
         .forms-list {
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 12px;
         }
 
         .form-card {
-            background-color: var(--card-bg);
+            background: linear-gradient(145deg, #FFFFFF, #F8F9FC);
             border: 1px solid var(--border-color);
             border-radius: 14px;
-            padding: 16px 18px;
+            padding: 16px 20px;
             text-decoration: none;
             color: var(--text-main);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            transition: all 0.25s ease;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.02);
         }
 
         .form-card:hover {
+            background-color: #FFFFFF;
             border-color: var(--venus-accent);
-            transform: translateX(4px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            transform: translateX(5px);
+            box-shadow: 0 6px 16px rgba(23, 20, 52, 0.06);
         }
 
         .form-info {
@@ -200,33 +222,38 @@
             color: var(--venus-accent);
             font-size: 18px;
             font-weight: bold;
+            transition: transform 0.2s ease;
+        }
+
+        .form-card:hover .chevron {
+            transform: translateX(3px);
         }
 
         /* CREATOR PROFILE */
         .creator-section {
             background-color: var(--venus-deep-blue);
             border: 2px solid var(--venus-accent);
-            border-radius: 16px;
-            padding: 18px;
+            border-radius: 18px;
+            padding: 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
-            gap: 6px;
+            gap: 8px;
             margin-top: 10px;
-            box-shadow: 0 4px 15px rgba(23, 20, 52, 0.15);
+            box-shadow: 0 6px 20px rgba(23, 20, 52, 0.15);
         }
         
-        .creator-title { font-size: 9.5px; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,0.6); font-weight: bold; margin-bottom: 2px; }
-        .creator-avatar { width: 65px; height: 65px; border-radius: 50%; border: 2px solid var(--venus-accent); object-fit: cover; object-position: center 15%; transition: transform 0.2s; cursor: pointer; }
+        .creator-title { font-size: 9.5px; text-transform: uppercase; letter-spacing: 1.5px; color: rgba(255,255,255,0.6); font-weight: bold; margin-bottom: 2px; }
+        .creator-avatar { width: 70px; height: 70px; border-radius: 50%; border: 2px solid var(--venus-accent); object-fit: cover; object-position: center 15%; transition: transform 0.2s; cursor: pointer; }
         .creator-avatar:hover { transform: scale(1.05); box-shadow: 0 4px 12px rgba(230, 138, 46, 0.4); }
-        .creator-info { display: flex; flex-direction: column; gap: 3px; font-size: 11px; color: rgba(255, 255, 255, 0.9); align-items: center; }
+        .creator-info { display: flex; flex-direction: column; gap: 4px; font-size: 11px; color: rgba(255, 255, 255, 0.9); align-items: center; }
         .creator-info a { color: rgba(255, 255, 255, 0.9) !important; text-decoration: none; }
         .creator-name { font-size: 15px; font-weight: bold; color: var(--venus-accent); display: flex; align-items: center; justify-content: center; gap: 6px; margin-top: 2px; }
         .flag-icon { width: 16px; border-radius: 2px; }
 
         /* MODAL */
-        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.75); justify-content: center; align-items: center; z-index: 1000; padding: 20px; box-sizing: border-box; backdrop-filter: blur(4px); }
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(23, 20, 52, 0.85); justify-content: center; align-items: center; z-index: 1000; padding: 20px; box-sizing: border-box; backdrop-filter: blur(4px); }
         .btn-close-modal { background-color: var(--venus-accent); color: var(--venus-deep-blue); border: none; padding: 10px 25px; border-radius: 20px; font-weight: bold; cursor: pointer; text-transform: uppercase; font-size: 12px; margin-top: 20px; letter-spacing: 1px;}
 
     </style>
@@ -273,7 +300,7 @@
 
             <a href="https://venusmedtech-latam.com/venusPSIZING" class="app-card" target="_blank">
                 <div class="valve-img-container">
-                    <img src="https://raw.githubusercontent.com/fblucciano/imagens-venus/4a254e93a90f6225406d11dafa8c519437a99e9b/PF%45.png?raw=true" alt="Venus P-Valve" class="valve-img" onerror="this.src='https://raw.githubusercontent.com/fblucciano/imagens-venus/4a254e93a90f6225406d11dafa8c519437a99e9b/AF.png'">
+                    <img src="https://github.com/fblucciano/imagens-venus/blob/4a254e93a90f6225406d11dafa8c519437a99e9b/PF%40.png?raw=true" alt="Venus P-Valve" class="valve-img">
                 </div>
                 <div class="app-title">Venus P-Valve</div>
                 <div class="app-badge">PULMONARY</div>
