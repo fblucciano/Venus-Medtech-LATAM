@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <title>Venus Medtech - Clinical Hub</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Paleta Dark Premium */
+            --bg-main: #0B0A10;
+            --card-bg: #151322;
+            --card-hover: #1E1A33;
+            --venus-accent: #E68A2E;
+            --border-color: #2A2542;
+            --text-main: #FFFFFF;
+            --text-muted: #9CA3AF;
+        }
+
+        body {
+            /* Fonte limpa e nativa */
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            margin: 0;
+            padding: 30px 20px;
+            display: flex;
+            justify-content: center;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .hub-container {
+            width: 100%;
+            max-width: 500px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        /* HEADER */
+        .header {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .logo {
+            height: 38px;
+            margin-bottom: 24px;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
+        }
+
+        .hub-title {
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            margin: 0 0 6px 0;
+        }
+
+        .hub-subtitle {
+            font-size: 12px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin: 0;
+        }
+
+        /* SECTIONS */
+        .section-title {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--venus-accent);
+            margin: 0 0 15px 0;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        /* GRID PARA OS APPS DE SIZING */
+        .apps-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+
+        .app-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 18px;
+            padding: 20px 16px;
+            text-decoration: none;
+            color: var(--text-main);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 10px;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .app-card:hover {
+            background-color: var(--card-hover);
+            border-color: var(--venus-accent);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 20px rgba(230, 138, 46, 0.1);
+        }
+
+        .app-icon-placeholder {
+            width: 45px;
+            height: 45px;
+            background: rgba(230, 138, 46, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+
+        .app-title {
+            font-size: 15px;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .app-badge {
+            font-size: 9px;
+            background-color: rgba(255,255,255,0.1);
+            padding: 3px 8px;
+            border-radius: 10px;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+        }
+
+        /* LISTA PARA OS FORMS CLÍNICOS */
+        .forms-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .form-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 18px 20px;
+            text-decoration: none;
+            color: var(--text-main);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .form-card:hover {
+            background-color: var(--card-hover);
+            border-color: var(--venus-accent);
+            transform: translateX(4px);
+        }
+
+        .form-info {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .form-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .form-desc {
+            font-size: 10px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 0;
+        }
+
+        .chevron {
+            color: var(--venus-accent);
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        /* CREATOR PROFILE */
+        .creator-section {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 18px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 8px;
+            margin-top: 10px;
+        }
+        
+        .creator-title { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); font-weight: bold; margin-bottom: 4px; }
+        .creator-avatar { width: 70px; height: 70px; border-radius: 50%; border: 2px solid var(--venus-accent); object-fit: cover; object-position: center 15%; transition: transform 0.2s; cursor: pointer; }
+        .creator-avatar:hover { transform: scale(1.05); box-shadow: 0 4px 12px rgba(230, 138, 46, 0.3); }
+        .creator-info { display: flex; flex-direction: column; gap: 4px; font-size: 11px; color: rgba(255, 255, 255, 0.8); align-items: center; }
+        .creator-info a { color: rgba(255, 255, 255, 0.8) !important; text-decoration: none; }
+        .creator-name { font-size: 15px; font-weight: bold; color: var(--venus-accent); display: flex; align-items: center; justify-content: center; gap: 6px; margin-top: 4px; }
+        .flag-icon { width: 16px; border-radius: 2px; }
+
+        /* MODAL */
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.85); justify-content: center; align-items: center; z-index: 1000; padding: 20px; box-sizing: border-box; backdrop-filter: blur(5px); }
+        .btn-close-modal { background-color: var(--venus-accent); color: var(--bg-main); border: none; padding: 12px 30px; border-radius: 20px; font-weight: bold; cursor: pointer; text-transform: uppercase; font-size: 12px; margin-top: 20px; letter-spacing: 1px;}
+
+    </style>
+</head>
+<body>
+
+<div class="hub-container">
+
+    <!-- HEADER -->
+    <div class="header">
+        <img src="https://raw.githubusercontent.com/fblucciano/imagens-venus/1a75aeb06adc8e2e8fbcba2fe4acebfbd0113d01/Venus_logo_OG_adj.2026_logo_sec.png" alt="Venus Medtech" class="logo">
+        <h1 class="hub-title">CLINICAL HUB</h1>
+        <p class="hub-subtitle">Regional Resources & Digital Tools</p>
+    </div>
+
+    <!-- SIZING APPS SECTION -->
+    <div>
+        <h2 class="section-title">Valve Sizing & Planning</h2>
+        <div class="apps-grid">
+            
+            <a href="https://venusmedtech-latam.com/VITAE_SIZING" class="app-card" target="_blank">
+                <div class="app-icon-placeholder">🎈</div>
+                <div class="app-title">Venus Vitae</div>
+                <div class="app-badge">BALLOON-EXP</div>
+            </a>
+
+            <a href="https://venusmedtech-latam.com/venusASIZING" class="app-card" target="_blank">
+                <div class="app-icon-placeholder">⚙️</div>
+                <div class="app-title">Venus A / Apro</div>
+                <div class="app-badge">SELF-EXP</div>
+            </a>
+
+            <a href="https://venusmedtech-latam.com/venusPXSIZE" class="app-card" target="_blank">
+                <div class="app-icon-placeholder">⚡</div>
+                <div class="app-title">Venus PowerX</div>
+                <div class="app-badge">ADVANCED</div>
+            </a>
+
+            <a href="https://venusmedtech-latam.com/venusPSIZING" class="app-card" target="_blank">
+                <div class="app-icon-placeholder">🫁</div>
+                <div class="app-title">Venus P-Valve</div>
+                <div class="app-badge">PULMONARY</div>
+            </a>
+
+        </div>
+    </div>
+
+    <!-- CLINICAL FORMS SECTION -->
+    <div>
+        <h2 class="section-title">Workflow & Operations</h2>
+        <div class="forms-list">
+            
+            <a href="https://forms.cloud.microsoft/pages/responsepage.aspx?id=8uhRbf1FMUqxRcjk9iaHVqzAQYYjXLNGrWQgNhzFFh5UQ0pCWDJORkZFOFVSR1o2SjA2RkhYMEpVWi4u&route=shorturl" class="form-card" target="_blank">
+                <div class="form-info">
+                    <h3 class="form-title">Reports Requesting</h3>
+                    <p class="form-desc">Corelab Data Services</p>
+                </div>
+                <div class="chevron">›</div>
+            </a>
+
+            <a href="https://forms.cloud.microsoft/pages/responsepage.aspx?id=8uhRbf1FMUqxRcjk9iaHVqzAQYYjXLNGrWQgNhzFFh5UQTBSNTYyRkFOUEZVNjhHWTdXRTlNQVJFRi4u&route=shorturl" class="form-card" target="_blank">
+                <div class="form-info">
+                    <h3 class="form-title">Post-Procedure Form</h3>
+                    <p class="form-desc">Clinical Evaluation</p>
+                </div>
+                <div class="chevron">›</div>
+            </a>
+
+            <a href="https://forms.cloud.microsoft/pages/responsepage.aspx?id=8uhRbf1FMUqxRcjk9iaHVqzAQYYjXLNGrWQgNhzFFh5URUhMRVVUWVNOWklEVEdGQlhHU0dBQ1dXVy4u&route=shorturl" class="form-card" target="_blank">
+                <div class="form-info">
+                    <h3 class="form-title">Case Scheduling Form</h3>
+                    <p class="form-desc">Scheduling & Logistics</p>
+                </div>
+                <div class="chevron">›</div>
+            </a>
+
+            <a href="https://forms.cloud.microsoft/pages/responsepage.aspx?id=8uhRbf1FMUqxRcjk9iaHVkkzWi86AAVKjqmFWcM0q4xUNllFVDRTSUdONzBVS1M4MDY2UjgwVDRPSi4u&route=shorturl" class="form-card" target="_blank">
+                <div class="form-info">
+                    <h3 class="form-title">Proctoring Authorization</h3>
+                    <p class="form-desc">Proctoring Request</p>
+                </div>
+                <div class="chevron">›</div>
+            </a>
+
+        </div>
+    </div>
+
+    <!-- PROFILE SECTION -->
+    <div class="creator-section">
+        <div class="creator-title">Developed & Maintained by</div>
+        <img src="https://raw.githubusercontent.com/fblucciano/imagens-venus/a2309b9d3a7fe352cb10acc6f1b9a4785fa8bb66/Image.jpeg" alt="Fabio Silva" class="creator-avatar" onclick="openCreatorModal()" title="Click to view full image">
+        <div class="creator-info">
+            <div class="creator-name">
+                Fabio Silva
+                <img src="https://raw.githubusercontent.com/fblucciano/imagens-venus/4a254e93a90f6225406d11dafa8c519437a99e9b/Bandeira-Nacionalsi%CC%81mbolo-maior-da-Pa%CC%81tria-Brasileira-Foto-Divulgac%CC%A7a%CC%83o.jpg" alt="Brazil" class="flag-icon">
+            </div>
+            <div style="margin-top:2px;">Therapy Development Manager</div>
+            <div style="margin-top:6px;">✉️ <a href="mailto:fabio.dasilva@venusmedtech.eu">fabio.dasilva@venusmedtech.eu</a></div>
+            <div>📞 <a href="tel:+5511974103530">+55 11 97410-3530</a></div>
+        </div>
+    </div>
+
+</div>
+
+<!-- CREATOR PHOTO MODAL -->
+<div class="modal-overlay" id="creatorModal" onclick="closeCreatorModal(event)">
+    <div style="display: flex; flex-direction: column; align-items: center; max-width: 95%; max-height: 95%;">
+        <img src="https://raw.githubusercontent.com/fblucciano/imagens-venus/a2309b9d3a7fe352cb10acc6f1b9a4785fa8bb66/Image.jpeg" alt="Fabio Silva Full" style="max-width: 100%; max-height: 70vh; border-radius: 16px; box-shadow: 0 10px 40px rgba(0,0,0,0.8); object-fit: contain;">
+        <button class="btn-close-modal" onclick="closeCreatorModalDirect()">Close Profile</button>
+    </div>
+</div>
+
+<script>
+    function openCreatorModal() { 
+        document.getElementById('creatorModal').style.display = 'flex'; 
+        document.body.style.overflow = 'hidden'; // Evita scroll no fundo
+    }
+    function closeCreatorModal(e) { 
+        if (e.target.id === 'creatorModal') {
+            document.getElementById('creatorModal').style.display = 'none'; 
+            document.body.style.overflow = 'auto';
+        }
+    }
+    function closeCreatorModalDirect() { 
+        document.getElementById('creatorModal').style.display = 'none'; 
+        document.body.style.overflow = 'auto';
+    }
+</script>
+
+</body>
+</html>
