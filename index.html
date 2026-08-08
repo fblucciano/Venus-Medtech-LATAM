@@ -12,9 +12,11 @@
 
     <style>
         :root {
+            /* Paleta oficial Venus Medtech (Brand Manual) */
             --bg-main: #F4F6F9;
             --card-bg: #FFFFFF;
             --venus-deep-blue: #171434;
+            --venus-blue: #302B6A;
             --venus-accent: #E68A2E;
             --border-color: #E2E8F0;
             --text-main: #1F2937;
@@ -26,7 +28,7 @@
             background-color: var(--bg-main);
             color: var(--text-main);
             margin: 0;
-            padding: 30px 20px;
+            padding: 35px 20px;
             display: flex;
             justify-content: center;
             -webkit-font-smoothing: antialiased;
@@ -37,7 +39,7 @@
             max-width: 520px;
             display: flex;
             flex-direction: column;
-            gap: 25px;
+            gap: 28px;
         }
 
         /* HEADER */
@@ -48,8 +50,8 @@
 
         .logo {
             height: 42px;
-            margin-bottom: 15px;
-            filter: drop-shadow(0 2px 5px rgba(23, 20, 52, 0.15));
+            margin-bottom: 16px;
+            filter: drop-shadow(0 2px 5px rgba(23, 20, 52, 0.12));
         }
 
         .hub-title {
@@ -79,12 +81,9 @@
             padding-bottom: 6px;
             border-bottom: 2px solid var(--venus-accent);
             font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 8px;
         }
 
-        /* GRID PARA OS APPS DE SIZING (CAIXAS DINÂMICAS) */
+        /* GRID PARA OS APPS DE SIZING (CARDS DINÂMICOS) */
         .apps-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -122,7 +121,7 @@
 
         .app-card:hover {
             border-color: var(--venus-accent);
-            transform: translateY(-5px);
+            transform: translateY(-4px);
             box-shadow: 0 12px 24px rgba(23, 20, 52, 0.08);
         }
 
@@ -168,7 +167,7 @@
             font-weight: 700;
         }
 
-        /* LISTA PARA OS FORMS CLÍNICOS (CAIXAS DINÂMICAS) */
+        /* LISTA PARA OS FORMS CLÍNICOS */
         .forms-list {
             display: flex;
             flex-direction: column;
@@ -192,7 +191,7 @@
         .form-card:hover {
             background-color: #FFFFFF;
             border-color: var(--venus-accent);
-            transform: translateX(5px);
+            transform: translateX(4px);
             box-shadow: 0 6px 16px rgba(23, 20, 52, 0.06);
         }
 
@@ -300,9 +299,9 @@
 
             <a href="https://venusmedtech-latam.com/venusPSIZING" class="app-card" target="_blank">
                 <div class="valve-img-container">
-                    <img src="https://github.com/fblucciano/imagens-venus/blob/4a254e93a90f6225406d11dafa8c519437a99e9b/PF%40.png?raw=true" alt="Venus P-Valve" class="valve-img">
+                    <img src="https://raw.githubusercontent.com/fblucciano/imagens-venus/4a254e93a90f6225406d11dafa8c519437a99e9b/PF%40.png?raw=true" alt="VenusP-Valve" class="valve-img">
                 </div>
-                <div class="app-title">Venus P-Valve</div>
+                <div class="app-title">VenusP-Valve</div>
                 <div class="app-badge">PULMONARY</div>
             </a>
 
